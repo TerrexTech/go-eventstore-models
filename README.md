@@ -1,7 +1,26 @@
-This repository defines the base-models for data stored in Event-Store.
+This repository provides the models and packages for interacting efficiently with Cassandra event-store.
 
-These models are intended to be imported by any libraries dealing with the respective models, to ensure consistency across structures/schema.
+Currently included:
+
+* Create `events` table and corresponding keyspace in Cassandra.
+* Create `events_meta` table and corresponding keyspace in Cassandra.
+* `Event` and `EventMeta` models (Go structs, really) to use with other packages.
+* `Event` and `EventMeta` Cassandra table-definitions.
+
+The models provided are intended to be imported by any libraries dealing with the respective models, to ensure consistency across structures/schema.
 
 **[Go Docs][0]**.
 
+### Usage:
+
+As mentioned above, this library can be used to directly create the tables `events`, `events_meta`, and the associated keyspace.
+
+To create the tables, simply call the [`bootstrap#Event`][1] and the [`bootstrap#EventMeta`][2] methods.
+
+The required information (such as Cassandra Hosts, Keyspace/Table names, etc.) is read from the Environemnt.
+
+The default configuration can be found in the `.env` file at the root.
+
   [0]: https://godoc.org/github.com/TerrexTech/go-eventstore-models/models
+  [1]: https://godoc.org/github.com/TerrexTech/go-eventstore-models/bootstrap#Event
+  [2]: https://godoc.org/github.com/TerrexTech/go-eventstore-models/bootstrap#EventMeta
