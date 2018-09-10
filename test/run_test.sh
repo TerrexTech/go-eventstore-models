@@ -27,10 +27,16 @@ if (( cur_attempts == max_attempts )); then
   exit 1
 fi
 
-echo "Waiting additional time for Cassandra to be ready."
 # The Cassandra image takes more time to be ready despite
 # nodetool-status being success.
 # There has to be a better way than this.
-sleep 40
+echo "Waiting additional time for Cassandra to be ready."
+add_wait=40
+cur_add_wait=0
+while (( ++cur_add_wait != add_wait ))
+do
+  echo Additional Wait: $cur_add_wait of $add_wait seconds
+  sleep 1
+done
 
 go test -v -race ./...
