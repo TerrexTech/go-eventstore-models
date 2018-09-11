@@ -40,6 +40,9 @@ func (ca *cassandra) newSession(
 	cluster.ConnectTimeout = time.Millisecond * 3000
 	cluster.Timeout = time.Millisecond * 3000
 	cluster.ProtoVersion = 4
+	cluster.RetryPolicy = &cql.ExponentialBackoffRetryPolicy{
+		NumRetries: 5,
+	}
 
 	if username != "" && password != "" {
 		cluster.Authenticator = cql.PasswordAuthenticator{
@@ -131,6 +134,54 @@ func (ca *cassandra) ensureKeyspaceTable() (*csndra.Table, error) {
 	return t, nil
 }
 
+// initCassandra verifies required env variables, and then
+// creates the Cassandra table as per set env-vars.
+func initCassandra(
+	tableDef map[string]csndra.TableColumn,
+	tableName string,
+) (*csndra.Table, error) {
+	envParams := []string{
+		"CASSANDRA_HOSTS",
+		"CASSANDRA_DATA_CENTERS",
+		"CASSANDRA_USERNAME",
+		"CASSANDRA_PASSWORD",
+		"CASSANDRA_KEYSPACE",
+		"CASSANDRA_EVENT_TABLE",
+		"CASSANDRA_EVENT_META_TABLE",
+	}
+
+	for _, varname := range envParams {
+		envVar := os.Getenv(varname)
+		if envVar == "" {
+			err := errors.New(
+				"Error while bootstrapping Cassandra table: " +
+					"Following env-var is required but was not found: " +
+					varname,
+			)
+			// This is intended, so that developers can notice at dev-time
+			log.Fatalln(err)
+		}
+	}
+
+	hosts := os.Getenv("CASSANDRA_HOSTS")
+	dataCenters := os.Getenv("CASSANDRA_DATA_CENTERS")
+	username := os.Getenv("CASSANDRA_USERNAME")
+	password := os.Getenv("CASSANDRA_PASSWORD")
+	keyspaceName := os.Getenv("CASSANDRA_KEYSPACE")
+
+	c := cassandra{
+		DataCenters: *utils.ParseHosts(dataCenters),
+		Hosts:       *utils.ParseHosts(hosts),
+		Keyspace:    keyspaceName,
+		Password:    password,
+		Table:       tableName,
+		Username:    username,
+		TableDef:    tableDef,
+	}
+
+	return c.ensureKeyspaceTable()
+}
+
 // Event create the event table if it doesn't exist.
 // This also returns the go-cassandrautils table reference to the table.
 // Following env vars can be used for configuration:
@@ -141,24 +192,8 @@ func (ca *cassandra) ensureKeyspaceTable() (*csndra.Table, error) {
 //  CASSANDRA_KEYSPACE
 //  CASSANDRA_EVENT_TABLE
 func Event() (*csndra.Table, error) {
-	hosts := os.Getenv("CASSANDRA_HOSTS")
-	dataCenters := os.Getenv("CASSANDRA_DATA_CENTERS")
-	username := os.Getenv("CASSANDRA_USERNAME")
-	password := os.Getenv("CASSANDRA_PASSWORD")
-	keyspaceName := os.Getenv("CASSANDRA_KEYSPACE")
 	tableName := os.Getenv("CASSANDRA_EVENT_TABLE")
-
-	c := cassandra{
-		DataCenters: *utils.ParseHosts(dataCenters),
-		Hosts:       *utils.ParseHosts(hosts),
-		Keyspace:    keyspaceName,
-		Password:    password,
-		Table:       tableName,
-		Username:    username,
-		TableDef:    definition.Event(),
-	}
-
-	return c.ensureKeyspaceTable()
+	return initCassandra(definition.Event(), tableName)
 }
 
 // EventMeta create the event-meta table if it doesn't exist.
@@ -171,22 +206,6 @@ func Event() (*csndra.Table, error) {
 //  CASSANDRA_KEYSPACE
 //  CASSANDRA_EVENT_META_TABLE
 func EventMeta() (*csndra.Table, error) {
-	hosts := os.Getenv("CASSANDRA_HOSTS")
-	dataCenters := os.Getenv("CASSANDRA_DATA_CENTERS")
-	username := os.Getenv("CASSANDRA_USERNAME")
-	password := os.Getenv("CASSANDRA_PASSWORD")
-	keyspaceName := os.Getenv("CASSANDRA_KEYSPACE")
 	tableName := os.Getenv("CASSANDRA_EVENT_META_TABLE")
-
-	c := cassandra{
-		DataCenters: *utils.ParseHosts(dataCenters),
-		Hosts:       *utils.ParseHosts(hosts),
-		Keyspace:    keyspaceName,
-		Password:    password,
-		Table:       tableName,
-		Username:    username,
-		TableDef:    definition.EventMeta(),
-	}
-
-	return c.ensureKeyspaceTable()
+	return initCassandra(definition.EventMeta(), tableName)
 }
