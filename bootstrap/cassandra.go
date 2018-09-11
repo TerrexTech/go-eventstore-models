@@ -125,6 +125,7 @@ func (ca *cassandra) ensureKeyspaceTable() (*csndra.Table, error) {
 		ca.Table,
 		&ca.DataCenters,
 	)
+	// session.Close()
 	if err != nil {
 		err = errors.Wrap(err, "Keyspace Creation Error")
 		return nil, err
@@ -140,7 +141,7 @@ func initCassandra(
 	tableDef map[string]csndra.TableColumn,
 	tableName string,
 ) (*csndra.Table, error) {
-	envParams := []string{
+	envVars := []string{
 		"CASSANDRA_HOSTS",
 		"CASSANDRA_DATA_CENTERS",
 		"CASSANDRA_USERNAME",
@@ -150,7 +151,7 @@ func initCassandra(
 		"CASSANDRA_EVENT_META_TABLE",
 	}
 
-	for _, varname := range envParams {
+	for _, varname := range envVars {
 		envVar := os.Getenv(varname)
 		if envVar == "" {
 			err := errors.New(
@@ -158,8 +159,7 @@ func initCassandra(
 					"Following env-var is required but was not found: " +
 					varname,
 			)
-			// This is intended, so that developers can notice at dev-time
-			log.Fatalln(err)
+			return nil, err
 		}
 	}
 

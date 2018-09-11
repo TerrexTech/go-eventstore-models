@@ -95,4 +95,30 @@ var _ = Describe("Event", func() {
 		Expect(keyspaceMeta.Tables[eventMetaTable]).ToNot(BeNil())
 		Expect(err).ToNot(HaveOccurred())
 	})
+
+	It("should return error if a critical env-var is not set", func() {
+		envVars := []string{
+			"CASSANDRA_HOSTS",
+			"CASSANDRA_DATA_CENTERS",
+			"CASSANDRA_USERNAME",
+			"CASSANDRA_PASSWORD",
+			"CASSANDRA_KEYSPACE",
+			"CASSANDRA_EVENT_TABLE",
+			"CASSANDRA_EVENT_META_TABLE",
+		}
+
+		for _, v := range envVars {
+			envVal := os.Getenv(v)
+			err := os.Unsetenv(v)
+			Expect(err).ToNot(HaveOccurred())
+
+			_, err = Event()
+			Expect(err).To(HaveOccurred())
+			_, err = EventMeta()
+			Expect(err).To(HaveOccurred())
+
+			err = os.Setenv(v, envVal)
+			Expect(err).ToNot(HaveOccurred())
+		}
+	})
 })
