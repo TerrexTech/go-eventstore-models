@@ -22,7 +22,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:797a9e9b372c887fffb2c06e23b041261e24f1f55fb5ec93ea7b4bdd29bcf6e3"
+  digest = "1:df4c8d34661526e022df63dce90c6a5cf05bcb09562593b09277bb6aab7bbec9"
   name = "github.com/gocql/gocql"
   packages = [
     ".",
@@ -31,7 +31,7 @@
     "internal/streams",
   ]
   pruneopts = "UT"
-  revision = "fccc3082740443f2c7e49a895cae905a9ab8149a"
+  revision = "e898b2baaf086eead546b4a2fadfb552e18ee330"
 
 [[projects]]
   branch = "master"
@@ -157,7 +157,7 @@
   name = "golang.org/x/sys"
   packages = ["unix"]
   pruneopts = "UT"
-  revision = "917fdcba135dcbaccd57425db91723541b4427c8"
+  revision = "d0be0721c37eeb5299f245a996a483160fc36940"
 
 [[projects]]
   digest = "1:aa4d6967a3237f8367b6bf91503964a77183ecf696f1273e8ad3551bb4412b5f"
