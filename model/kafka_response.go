@@ -5,7 +5,8 @@ package model
 // to indicate if the operation was successful or not.
 type KafkaResponse struct {
 	// AggregateID is the ID of aggregate the response is for.
-	AggregateID int64 `json:"aggregate_id"`
+	// This can be "-1" if the aggregateID at that point is unknown.
+	AggregateID int8 `json:"aggregate_id"`
 	// Input is the message-input received by Consumer.
 	Input string `json:"input"`
 	// Error is the error occurred while processing the Input.
