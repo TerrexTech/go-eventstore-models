@@ -11,5 +11,5 @@ type EventStoreQuery struct {
 	// YearBucket is the partitioning-key for the Cassandra table.
 	// Specify this to let the query-handler know which partition to
 	// user for query operations.
-	YearBucket int8 `json:"year_bucket"`
+	YearBucket int16 `json:"year_bucket"`
 }
