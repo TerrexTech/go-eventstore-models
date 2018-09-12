@@ -16,7 +16,7 @@ func EventMeta() map[string]csndra.TableColumn {
 				PrimaryKeyIndex: "2",
 				PrimaryKeyOrder: "DESC",
 			},
-			"aggregateId": csndra.TableColumn{
+			"aggregateID": csndra.TableColumn{
 				Name:            "aggregate_id",
 				DataType:        "int",
 				PrimaryKeyIndex: "1",
