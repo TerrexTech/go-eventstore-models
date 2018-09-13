@@ -7,7 +7,7 @@ import (
 	csndra "github.com/TerrexTech/go-cassandrautils/cassandra"
 	"github.com/TerrexTech/go-cassandrautils/cassandra/driver"
 
-	"github.com/TerrexTech/go-commonutils/utils"
+	"github.com/TerrexTech/go-commonutils/commonutil"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
@@ -39,7 +39,7 @@ var _ = Describe("Event", func() {
 		// Create Cassandra Session
 		c := cassandra{}
 		var err error
-		session, err = c.newSession(utils.ParseHosts(hosts), username, password)
+		session, err = c.newSession(commonutil.ParseHosts(hosts), username, password)
 		Expect(err).ToNot(HaveOccurred())
 
 		// Start fresh for every test

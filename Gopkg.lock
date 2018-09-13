@@ -13,16 +13,16 @@
   version = "v1.2.0"
 
 [[projects]]
-  digest = "1:f446f7e9171044d853ff08a894e733cdb66538a32b6a66b2bce5de7c691897a2"
+  digest = "1:dcade65c88d17fe1841540f1f1f841941cf11f153a26fad02451f263a71490f1"
   name = "github.com/TerrexTech/go-commonutils"
-  packages = ["utils"]
+  packages = ["commonutil"]
   pruneopts = "UT"
-  revision = "ee7a939084fdb644ca3f925275195b170610f3e3"
-  version = "v2.0"
+  revision = "bec34e895c0ef90d7b0452f141691767356ae6e4"
+  version = "v3.0.0"
 
 [[projects]]
   branch = "master"
-  digest = "1:df4c8d34661526e022df63dce90c6a5cf05bcb09562593b09277bb6aab7bbec9"
+  digest = "1:9265f7f8d78bf82bff4a19cc6b33b28073160920b07d8d4d5dca46695edf3b66"
   name = "github.com/gocql/gocql"
   packages = [
     ".",
@@ -31,7 +31,7 @@
     "internal/streams",
   ]
   pruneopts = "UT"
-  revision = "e898b2baaf086eead546b4a2fadfb552e18ee330"
+  revision = "5a139e8dcc59d560335dbda641b9f42085e59b0a"
 
 [[projects]]
   branch = "master"
@@ -64,12 +64,12 @@
   version = "v1.0.0"
 
 [[projects]]
-  digest = "1:70e697d67ccaec45e16bac3a32380ebcd9e7e071079c60d0171d42cf1cf9748a"
+  digest = "1:ecd9aa82687cf31d1585d4ac61d0ba180e42e8a6182b85bd785fcca8dfeefc1b"
   name = "github.com/joho/godotenv"
   packages = ["."]
   pruneopts = "UT"
-  revision = "a79fa1e548e2c689c241d10173efd51e5d689d5b"
-  version = "v1.2.0"
+  revision = "23d116af351c84513e1946b527c88823e476be13"
+  version = "v1.3.0"
 
 [[projects]]
   digest = "1:42e29deef12327a69123b9cb2cb45fee4af5c12c2a23c6e477338279a052703f"
@@ -99,7 +99,7 @@
   version = "v1.6.0"
 
 [[projects]]
-  digest = "1:29f294e6a3b9d30629266b2765a8c203056387941e600405b8e8871c84653042"
+  digest = "1:ab54eea8d482272009e9e4af07d4d9b5236c27b4d8c54a3f2c99d163be883eca"
   name = "github.com/onsi/gomega"
   packages = [
     ".",
@@ -116,8 +116,8 @@
     "types",
   ]
   pruneopts = "UT"
-  revision = "b6ea1ea48f981d0f615a154a45eabb9dd466556d"
-  version = "v1.4.1"
+  revision = "7615b9433f86a8bdf29709bf288bc4fd0636a369"
+  version = "v1.4.2"
 
 [[projects]]
   digest = "1:40e195917a951a8bf867cd05de2a46aaf1806c50cf92eebf4c16f78cd196f747"
@@ -149,7 +149,7 @@
     "html/charset",
   ]
   pruneopts = "UT"
-  revision = "161cd47e91fd58ac17490ef4d742dc98bb4cf60e"
+  revision = "26e67e76b6c3f6ce91f7c52def5af501b4e0f3a2"
 
 [[projects]]
   branch = "master"
@@ -224,7 +224,7 @@
   input-imports = [
     "github.com/TerrexTech/go-cassandrautils/cassandra",
     "github.com/TerrexTech/go-cassandrautils/cassandra/driver",
-    "github.com/TerrexTech/go-commonutils/utils",
+    "github.com/TerrexTech/go-commonutils/commonutil",
     "github.com/gocql/gocql",
     "github.com/joho/godotenv",
     "github.com/onsi/ginkgo",
