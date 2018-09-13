@@ -11,7 +11,7 @@ import (
 
 	csndra "github.com/TerrexTech/go-cassandrautils/cassandra"
 	"github.com/TerrexTech/go-cassandrautils/cassandra/driver"
-	"github.com/TerrexTech/go-commonutils/utils"
+	"github.com/TerrexTech/go-commonutils/commonutil"
 	cql "github.com/gocql/gocql"
 	"github.com/pkg/errors"
 )
@@ -170,8 +170,8 @@ func initCassandra(
 	keyspaceName := os.Getenv("CASSANDRA_KEYSPACE")
 
 	c := cassandra{
-		DataCenters: *utils.ParseHosts(dataCenters),
-		Hosts:       *utils.ParseHosts(hosts),
+		DataCenters: *commonutil.ParseHosts(dataCenters),
+		Hosts:       *commonutil.ParseHosts(hosts),
 		Keyspace:    keyspaceName,
 		Password:    password,
 		Table:       tableName,
