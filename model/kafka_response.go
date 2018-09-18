@@ -8,7 +8,7 @@ type KafkaResponse struct {
 	AggregateID int8 `json:"aggregate_id,omitempty"`
 	// CorrelationID can be used to "identify" responses, such as checking
 	// if the response if for some particular request.
-	CorrelationID int8 `json:"correlation_id,omitempty"`
+	CorrelationID string `json:"correlation_id,omitempty"`
 	// Input is the message-input received by Consumer.
 	// Use this to provide context of whatever data was attempted to be processed.
 	Input string `json:"input"`
