@@ -20,4 +20,8 @@ type KafkaResponse struct {
 	// Result is the result after an input was processed.
 	// This is some data returned by processing (such as database results) etc.
 	Result string `json:"result,omitempty"`
+	// Topic is the topic on which Kafka producer should produce this message.
+	// This should not be used once producer has produced the message. Infact, this field is
+	// intended to be set to blank value once the producer knows the topic to produce on.
+	Topic string `json:"topic,omitempty"`
 }
