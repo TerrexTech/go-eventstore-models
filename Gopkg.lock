@@ -22,7 +22,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:9265f7f8d78bf82bff4a19cc6b33b28073160920b07d8d4d5dca46695edf3b66"
+  digest = "1:41cbe73cce1dd0e86e2223ca5deecf41c374643c82ec2b56f78bc4e7cad24f83"
   name = "github.com/gocql/gocql"
   packages = [
     ".",
@@ -31,7 +31,15 @@
     "internal/streams",
   ]
   pruneopts = "UT"
-  revision = "5a139e8dcc59d560335dbda641b9f42085e59b0a"
+  revision = "799fb0373110eaa4e2e71dd32a9b5903f80dca8f"
+
+[[projects]]
+  digest = "1:ce579162ae1341f3e5ab30c0dce767f28b1eb6a81359aad01723f1ba6b4becdf"
+  name = "github.com/gofrs/uuid"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "370558f003bfe29580cd0f698d8640daccdcc45c"
+  version = "v3.1.1"
 
 [[projects]]
   branch = "master"
@@ -141,7 +149,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:8bc7ff3c61fb32fe0bf7dfe7158b434608a562f891bf9b4ff1f1c2fa8cfe48e2"
+  digest = "1:c85f5fc06e706d2e47979c95633d90e1293356446c876383d466f0054d19e731"
   name = "golang.org/x/net"
   packages = [
     "html",
@@ -149,15 +157,15 @@
     "html/charset",
   ]
   pruneopts = "UT"
-  revision = "26e67e76b6c3f6ce91f7c52def5af501b4e0f3a2"
+  revision = "2f5d2388922f370f4355f327fcf4cfe9f5583908"
 
 [[projects]]
   branch = "master"
-  digest = "1:6eb2645d74b43d9c87b51947df39f7c668a4f422cd512053f7f6f75bfaad0197"
+  digest = "1:6c54cefa33de85c47075aae30f1d1a333967c405272010bb76aa943467e4cbae"
   name = "golang.org/x/sys"
   packages = ["unix"]
   pruneopts = "UT"
-  revision = "d0be0721c37eeb5299f245a996a483160fc36940"
+  revision = "d47a0f3392421c5624713c9a19fe781f651f8a50"
 
 [[projects]]
   digest = "1:aa4d6967a3237f8367b6bf91503964a77183ecf696f1273e8ad3551bb4412b5f"
@@ -226,6 +234,7 @@
     "github.com/TerrexTech/go-cassandrautils/cassandra/driver",
     "github.com/TerrexTech/go-commonutils/commonutil",
     "github.com/gocql/gocql",
+    "github.com/gofrs/uuid",
     "github.com/joho/godotenv",
     "github.com/onsi/ginkgo",
     "github.com/onsi/gomega",

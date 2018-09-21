@@ -14,5 +14,5 @@ type EventMeta struct {
 	AggregateID int8 `json:"aggregate_id"`
 	// Year bucket is the year in which the event was generated.
 	// This is used as the partitioning key.
-	YearBucket int16 `json:"year_bucket"`
+	PartitionKey int8 `json:"partition_key"`
 }

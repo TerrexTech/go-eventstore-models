@@ -141,28 +141,6 @@ func initCassandra(
 	tableDef map[string]csndra.TableColumn,
 	tableName string,
 ) (*csndra.Table, error) {
-	envVars := []string{
-		"CASSANDRA_HOSTS",
-		"CASSANDRA_DATA_CENTERS",
-		"CASSANDRA_USERNAME",
-		"CASSANDRA_PASSWORD",
-		"CASSANDRA_KEYSPACE",
-		"CASSANDRA_EVENT_TABLE",
-		"CASSANDRA_EVENT_META_TABLE",
-	}
-
-	for _, varname := range envVars {
-		envVar := os.Getenv(varname)
-		if envVar == "" {
-			err := errors.New(
-				"Error while bootstrapping Cassandra table: " +
-					"Following env-var is required but was not found: " +
-					varname,
-			)
-			return nil, err
-		}
-	}
-
 	hosts := os.Getenv("CASSANDRA_HOSTS")
 	dataCenters := os.Getenv("CASSANDRA_DATA_CENTERS")
 	username := os.Getenv("CASSANDRA_USERNAME")
@@ -192,6 +170,22 @@ func initCassandra(
 //  CASSANDRA_KEYSPACE
 //  CASSANDRA_EVENT_TABLE
 func Event() (*csndra.Table, error) {
+	// We don't check username and password because they might need to be
+	// empty if authentication is not set on Cassandra.
+	missingVar, err := commonutil.ValidateEnv(
+		"CASSANDRA_HOSTS",
+		"CASSANDRA_DATA_CENTERS",
+		"CASSANDRA_KEYSPACE",
+		"CASSANDRA_EVENT_TABLE",
+	)
+	if err != nil {
+		return nil, errors.New(
+			"Error while bootstrapping Cassandra table: " +
+				"Following env-var is required but was not found: " +
+				missingVar,
+		)
+	}
+
 	tableName := os.Getenv("CASSANDRA_EVENT_TABLE")
 	return initCassandra(definition.Event(), tableName)
 }
@@ -206,6 +200,22 @@ func Event() (*csndra.Table, error) {
 //  CASSANDRA_KEYSPACE
 //  CASSANDRA_EVENT_META_TABLE
 func EventMeta() (*csndra.Table, error) {
+	// We don't check username and password because they might need to be
+	// empty if authentication is not set on Cassandra.
+	missingVar, err := commonutil.ValidateEnv(
+		"CASSANDRA_HOSTS",
+		"CASSANDRA_DATA_CENTERS",
+		"CASSANDRA_KEYSPACE",
+		"CASSANDRA_EVENT_META_TABLE",
+	)
+	if err != nil {
+		return nil, errors.New(
+			"Error while bootstrapping Cassandra table: " +
+				"Following env-var is required but was not found: " +
+				missingVar,
+		)
+	}
+
 	tableName := os.Getenv("CASSANDRA_EVENT_META_TABLE")
 	return initCassandra(definition.EventMeta(), tableName)
 }
