@@ -182,7 +182,7 @@ func initCassandra(
 	return c.ensureKeyspaceTable()
 }
 
-// Event create the event table if it doesn't exist.
+// Event creates the event table if it doesn't exist.
 // This also returns the go-cassandrautils table reference to the table.
 // Following env vars can be used for configuration:
 //  CASSANDRA_HOSTS
@@ -196,7 +196,7 @@ func Event() (*csndra.Table, error) {
 	return initCassandra(definition.Event(), tableName)
 }
 
-// EventMeta create the event-meta table if it doesn't exist.
+// EventMeta creates the event-meta table if it doesn't exist.
 // This also returns the go-cassandrautils table reference to the table.
 // Following env vars can be used for configuration:
 //  CASSANDRA_HOSTS

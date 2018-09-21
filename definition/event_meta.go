@@ -19,8 +19,8 @@ func EventMeta() map[string]csndra.TableColumn {
 				DataType:        "int",
 				PrimaryKeyIndex: "1",
 			},
-			"yearBucket": csndra.TableColumn{
-				Name:            "year_bucket",
+			"partitionKey": csndra.TableColumn{
+				Name:            "partition_key",
 				DataType:        "smallint",
 				PrimaryKeyIndex: "0",
 			},
