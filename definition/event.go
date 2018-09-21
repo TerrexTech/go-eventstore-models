@@ -15,12 +15,12 @@ func Event() map[string]csndra.TableColumn {
 			},
 			"aggregateID": csndra.TableColumn{
 				Name:            "aggregate_id",
-				DataType:        "int",
+				DataType:        "smallint",
 				PrimaryKeyIndex: "1",
 			},
 			"data": csndra.TableColumn{
 				Name:     "data",
-				DataType: "text",
+				DataType: "blob",
 			},
 			"timestamp": csndra.TableColumn{
 				Name:            "timestamp",
@@ -30,7 +30,7 @@ func Event() map[string]csndra.TableColumn {
 			},
 			"userID": csndra.TableColumn{
 				Name:     "user_id",
-				DataType: "int",
+				DataType: "uuid",
 			},
 			"uuid": csndra.TableColumn{
 				Name:            "uuid",

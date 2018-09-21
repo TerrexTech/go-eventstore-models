@@ -100,8 +100,6 @@ var _ = Describe("Event", func() {
 		envVars := []string{
 			"CASSANDRA_HOSTS",
 			"CASSANDRA_DATA_CENTERS",
-			"CASSANDRA_USERNAME",
-			"CASSANDRA_PASSWORD",
 			"CASSANDRA_KEYSPACE",
 			"CASSANDRA_EVENT_TABLE",
 			"CASSANDRA_EVENT_META_TABLE",
@@ -112,10 +110,14 @@ var _ = Describe("Event", func() {
 			err := os.Unsetenv(v)
 			Expect(err).ToNot(HaveOccurred())
 
-			_, err = Event()
-			Expect(err).To(HaveOccurred())
-			_, err = EventMeta()
-			Expect(err).To(HaveOccurred())
+			if v != "CASSANDRA_EVENT_META_TABLE" {
+				_, err = Event()
+				Expect(err).To(HaveOccurred())
+			}
+			if v != "CASSANDRA_EVENT_TABLE" {
+				_, err = EventMeta()
+				Expect(err).To(HaveOccurred())
+			}
 
 			err = os.Setenv(v, envVal)
 			Expect(err).ToNot(HaveOccurred())
