@@ -8,8 +8,4 @@ type EventStoreQuery struct {
 	// already fetched by the aggregate. The event-store will be queried
 	// for events greater than this version.
 	AggregateVersion int64 `json:"aggregate_version"`
-	// YearBucket is the partitioning-key for the Cassandra table.
-	// Specify this to let the query-handler know which partition to
-	// user for query operations.
-	YearBucket int16 `json:"year_bucket"`
 }

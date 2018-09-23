@@ -3,6 +3,10 @@ package bootstrap
 import (
 	"log"
 	"os"
+	"time"
+
+	"github.com/TerrexTech/go-eventstore-models/model"
+	"github.com/TerrexTech/uuuid"
 
 	csndra "github.com/TerrexTech/go-cassandrautils/cassandra"
 	"github.com/TerrexTech/go-cassandrautils/cassandra/driver"
@@ -75,13 +79,27 @@ var _ = Describe("Event", func() {
 	})
 
 	It("should create the event table", func() {
-		_, err := Event()
+		e, err := Event()
 		Expect(err).ToNot(HaveOccurred())
 
 		keyspaceMeta, err := session.GoCqlSession().KeyspaceMetadata(keyspace)
 
 		eventTable := os.Getenv("CASSANDRA_EVENT_TABLE")
 		Expect(keyspaceMeta.Tables[eventTable]).ToNot(BeNil())
+		Expect(err).ToNot(HaveOccurred())
+
+		u, _ := uuuid.NewV4()
+		e1 := &model.Event{
+			Action:      "insert",
+			AggregateID: 1,
+			Data:        []byte(""),
+			Timestamp:   time.Now(),
+			UserUUID:    u,
+			UUID:        u,
+			Version:     1,
+			YearBucket:  2018,
+		}
+		err = <-e.AsyncInsert(e1)
 		Expect(err).ToNot(HaveOccurred())
 	})
 
