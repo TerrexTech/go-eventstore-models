@@ -21,6 +21,14 @@
   version = "v3.0.0"
 
 [[projects]]
+  digest = "1:ce36c38655294f7a1c19b96c01ef0e94a843773e289de557c754dc3756c514a4"
+  name = "github.com/TerrexTech/uuuid"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "a29ab526ee6513a1fd0195b41a921f305298b1c2"
+  version = "v1.0.0"
+
+[[projects]]
   branch = "master"
   digest = "1:41cbe73cce1dd0e86e2223ca5deecf41c374643c82ec2b56f78bc4e7cad24f83"
   name = "github.com/gocql/gocql"
@@ -233,6 +241,7 @@
     "github.com/TerrexTech/go-cassandrautils/cassandra",
     "github.com/TerrexTech/go-cassandrautils/cassandra/driver",
     "github.com/TerrexTech/go-commonutils/commonutil",
+    "github.com/TerrexTech/uuuid",
     "github.com/gocql/gocql",
     "github.com/gofrs/uuid",
     "github.com/joho/godotenv",

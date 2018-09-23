@@ -28,8 +28,8 @@ func Event() map[string]csndra.TableColumn {
 				PrimaryKeyIndex: "4",
 				PrimaryKeyOrder: "DESC",
 			},
-			"userID": csndra.TableColumn{
-				Name:     "user_id",
+			"userUUID": csndra.TableColumn{
+				Name:     "user_uuid",
 				DataType: "uuid",
 			},
 			"uuid": csndra.TableColumn{
