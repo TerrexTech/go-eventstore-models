@@ -19,5 +19,5 @@ type EventStoreQuery struct {
 	CorrelationID uuuid.UUID `json:"correlation_id,omitempty"`
 
 	// YearBucket is the partition-key for Event-Table.
-	YearBucket int8 `json:"year_bucket"`
+	YearBucket int16 `json:"year_bucket"`
 }
