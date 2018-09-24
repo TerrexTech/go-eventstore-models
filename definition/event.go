@@ -18,6 +18,10 @@ func Event() map[string]csndra.TableColumn {
 				DataType:        "smallint",
 				PrimaryKeyIndex: "1",
 			},
+			"correlationID": csndra.TableColumn{
+				Name:     "correlation_id",
+				DataType: "uuid",
+			},
 			"data": csndra.TableColumn{
 				Name:     "data",
 				DataType: "blob",

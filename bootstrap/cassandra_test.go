@@ -88,16 +88,20 @@ var _ = Describe("Event", func() {
 		Expect(keyspaceMeta.Tables[eventTable]).ToNot(BeNil())
 		Expect(err).ToNot(HaveOccurred())
 
+		cid, err := uuuid.NewV4()
+		Expect(err).ToNot(HaveOccurred())
+
 		u, _ := uuuid.NewV4()
 		e1 := &model.Event{
-			Action:      "insert",
-			AggregateID: 1,
-			Data:        []byte(""),
-			Timestamp:   time.Now(),
-			UserUUID:    u,
-			UUID:        u,
-			Version:     1,
-			YearBucket:  2018,
+			Action:        "insert",
+			AggregateID:   1,
+			CorrelationID: cid,
+			Data:          []byte(""),
+			Timestamp:     time.Now(),
+			UserUUID:      u,
+			UUID:          u,
+			Version:       1,
+			YearBucket:    2018,
 		}
 		err = <-e.AsyncInsert(e1)
 		Expect(err).ToNot(HaveOccurred())
