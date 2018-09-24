@@ -17,4 +17,7 @@ type EventStoreQuery struct {
 	// Including CorrelationID will result in inclusion of this ID in any
 	// responses generated as per result of event's processing.
 	CorrelationID uuuid.UUID `json:"correlation_id,omitempty"`
+
+	// YearBucket is the partition-key for Event-Table.
+	YearBucket int8 `json:"year_bucket"`
 }
