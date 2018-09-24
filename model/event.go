@@ -12,6 +12,10 @@ type Event struct {
 	// Examples: register_user, new_item_inventory etc.
 	Action string `cql:"action" json:"action"`
 
+	// CorrelationID can be used to "identify" responses, such as checking
+	// if the response is for some particular request.
+	CorrelationID uuuid.UUID `json:"correlation_id,omitempty"`
+
 	// AggregateID is the ID of aggregate responsible for consuming event.
 	AggregateID int8 `cql:"aggregate_id" json:"aggregate_id"`
 
