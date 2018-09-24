@@ -14,6 +14,8 @@ type Event struct {
 
 	// CorrelationID can be used to "identify" responses, such as checking
 	// if the response is for some particular request.
+	// Including CorrelationID will result in inclusion of this ID in any
+	// responses generated as per result of event's processing.
 	CorrelationID uuuid.UUID `json:"correlation_id,omitempty"`
 
 	// AggregateID is the ID of aggregate responsible for consuming event.
