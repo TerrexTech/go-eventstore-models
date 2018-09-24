@@ -11,11 +11,13 @@ type KafkaResponse struct {
 
 	// CorrelationID can be used to "identify" responses, such as checking
 	// if the response is for some particular request.
+	// Including CorrelationID will result in inclusion of this ID in any
+	// responses generated as per result of event's processing.
 	CorrelationID uuuid.UUID `json:"correlation_id,omitempty"`
 
 	// Input is the data that was being processed.
 	// Use this to provide context of whatever data was attempted to be processed.
-	Input []byte `json:"input"`
+	Input []byte `json:"input,omitempty"`
 
 	// Error is the error occurred while processing the Input.
 	// Convert errors to strings, this is just an indication that
