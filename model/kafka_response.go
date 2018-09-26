@@ -25,6 +25,9 @@ type KafkaResponse struct {
 	// user. Blank Error-string means everything was fine.
 	Error string `json:"error"`
 
+	// ErrorCode can be used to identify type of error.
+	ErrorCode int16 `json:"error_code,omitempty"`
+
 	// Result is the result after an input was processed.
 	// This is some data returned by processing (such as database results) etc.
 	Result []byte `json:"result,omitempty"`
