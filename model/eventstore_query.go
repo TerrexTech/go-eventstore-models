@@ -20,4 +20,7 @@ type EventStoreQuery struct {
 
 	// YearBucket is the partition-key for Event-Table.
 	YearBucket int16 `json:"year_bucket"`
+
+	// UUID is the V4-UUID Query-Identifier.
+	UUID uuuid.UUID `json:"uuid,omitempty"`
 }

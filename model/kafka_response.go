@@ -15,10 +15,6 @@ type KafkaResponse struct {
 	// responses generated as per result of event's processing.
 	CorrelationID uuuid.UUID `json:"correlation_id,omitempty"`
 
-	// Input is the data that was being processed.
-	// Use this to provide context of whatever data was attempted to be processed.
-	Input []byte `json:"input,omitempty"`
-
 	// Error is the error occurred while processing the Input.
 	// Convert errors to strings, this is just an indication that
 	// something went wrong, so we can signal/display-error to end-
@@ -28,6 +24,10 @@ type KafkaResponse struct {
 	// ErrorCode can be used to identify type of error.
 	ErrorCode int16 `json:"error_code,omitempty"`
 
+	// Input is the data that was being processed.
+	// Use this to provide context of whatever data was attempted to be processed.
+	Input []byte `json:"input,omitempty"`
+
 	// Result is the result after an input was processed.
 	// This is some data returned by processing (such as database results) etc.
 	Result []byte `json:"result,omitempty"`
@@ -36,4 +36,7 @@ type KafkaResponse struct {
 	// This field will not be included as part of the response, and is only
 	// for referencing purposes for producer.
 	Topic string `json:"-"`
+
+	// UUID is the V4-UUID Response-Identifier.
+	UUID uuuid.UUID `json:"uuid,omitempty"`
 }

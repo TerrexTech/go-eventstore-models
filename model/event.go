@@ -27,11 +27,11 @@ type Event struct {
 	// Timestamp is the time when the event was generated.
 	Timestamp time.Time `cql:"timestamp" json:"timestamp"`
 
-	// UserUUID is the UUID of the user who generated the event.
+	// UserUUID is the V4-UUID of the user who generated the event.
 	UserUUID uuuid.UUID `cql:"user_uuid" json:"user_uuid"`
 
-	// UUID is the unique-indentifier for event.
-	UUID uuuid.UUID `cql:"uuid" json:"uuid"`
+	// TimeUUID is the V1-UUID unique-indentifier for event.
+	TimeUUID uuuid.UUID `cql:"time_uuid" json:"time_uuid"`
 
 	// Version is the version for events as processed for aggregate-projection.
 	// This is incremented by the aggregate itself each time it updates its
