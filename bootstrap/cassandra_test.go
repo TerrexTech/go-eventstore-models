@@ -91,15 +91,19 @@ var _ = Describe("Event", func() {
 		cid, err := uuuid.NewV4()
 		Expect(err).ToNot(HaveOccurred())
 
-		u, _ := uuuid.NewV4()
+		uid, err := uuuid.NewV4()
+		Expect(err).ToNot(HaveOccurred())
+		tid, err := uuuid.NewV1()
+		Expect(err).ToNot(HaveOccurred())
+
 		e1 := &model.Event{
 			Action:        "insert",
 			AggregateID:   1,
 			CorrelationID: cid,
 			Data:          []byte(""),
 			Timestamp:     time.Now(),
-			UserUUID:      u,
-			UUID:          u,
+			UserUUID:      uid,
+			TimeUUID:      tid,
 			Version:       1,
 			YearBucket:    2018,
 		}

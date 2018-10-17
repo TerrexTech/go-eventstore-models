@@ -11,7 +11,7 @@ func Event() map[string]csndra.TableColumn {
 			"action": csndra.TableColumn{
 				Name:            "action",
 				DataType:        "text",
-				PrimaryKeyIndex: "3",
+				PrimaryKeyIndex: "4",
 			},
 			"aggregateID": csndra.TableColumn{
 				Name:            "aggregate_id",
@@ -27,19 +27,18 @@ func Event() map[string]csndra.TableColumn {
 				DataType: "blob",
 			},
 			"timestamp": csndra.TableColumn{
-				Name:            "timestamp",
-				DataType:        "timestamp",
-				PrimaryKeyIndex: "4",
-				PrimaryKeyOrder: "DESC",
+				Name:     "timestamp",
+				DataType: "timestamp",
 			},
 			"userUUID": csndra.TableColumn{
 				Name:     "user_uuid",
 				DataType: "uuid",
 			},
-			"uuid": csndra.TableColumn{
-				Name:            "uuid",
-				DataType:        "uuid",
-				PrimaryKeyIndex: "5",
+			"timeUUID": csndra.TableColumn{
+				Name:            "time_uuid",
+				DataType:        "timeuuid",
+				PrimaryKeyIndex: "3",
+				PrimaryKeyOrder: "DESC",
 			},
 			"version": csndra.TableColumn{
 				Name:            "version",
