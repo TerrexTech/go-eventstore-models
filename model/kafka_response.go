@@ -9,6 +9,9 @@ type KafkaResponse struct {
 	// AggregateID is the ID of aggregate the response is for.
 	AggregateID int8 `json:"aggregate_id,omitempty"`
 
+	// Action is the action corresponding to which the response was produced.
+	Action string `json:"action,omitempty"`
+
 	// CorrelationID can be used to "identify" responses, such as checking
 	// if the response is for some particular request.
 	// Including CorrelationID will result in inclusion of this ID in any
