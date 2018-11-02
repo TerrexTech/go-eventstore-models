@@ -8,37 +8,40 @@ var event map[string]csndra.TableColumn
 func Event() map[string]csndra.TableColumn {
 	if event == nil {
 		event = map[string]csndra.TableColumn{
-			"action": csndra.TableColumn{
-				Name:            "action",
-				DataType:        "text",
-				PrimaryKeyIndex: "4",
-			},
 			"aggregateID": csndra.TableColumn{
 				Name:            "aggregate_id",
 				DataType:        "smallint",
 				PrimaryKeyIndex: "1",
 			},
+			"eventAction": csndra.TableColumn{
+				Name:     "event_action",
+				DataType: "text",
+			},
 			"correlationID": csndra.TableColumn{
 				Name:     "correlation_id",
 				DataType: "uuid",
+			},
+			"serviceAction": csndra.TableColumn{
+				Name:     "service_action",
+				DataType: "text",
 			},
 			"data": csndra.TableColumn{
 				Name:     "data",
 				DataType: "blob",
 			},
-			"timestamp": csndra.TableColumn{
-				Name:     "timestamp",
-				DataType: "timestamp",
+			"nanoTime": csndra.TableColumn{
+				Name:            "nano_time",
+				DataType:        "timestamp",
+				PrimaryKeyIndex: "3",
+				PrimaryKeyOrder: "DESC",
 			},
 			"userUUID": csndra.TableColumn{
 				Name:     "user_uuid",
 				DataType: "uuid",
 			},
-			"timeUUID": csndra.TableColumn{
-				Name:            "time_uuid",
-				DataType:        "timeuuid",
-				PrimaryKeyIndex: "3",
-				PrimaryKeyOrder: "DESC",
+			"UUID": csndra.TableColumn{
+				Name:     "uuid",
+				DataType: "uuid",
 			},
 			"version": csndra.TableColumn{
 				Name:            "version",

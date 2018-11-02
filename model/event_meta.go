@@ -8,10 +8,10 @@ package model
 type EventMeta struct {
 	// AggregateVersion tracks the version to be used
 	// by new events for that aggregate.
-	AggregateVersion int64 `cql:"aggregate_version" json:"aggregate_version"`
+	AggregateVersion int64 `cql:"aggregate_version,omitempty" json:"aggregateVersion,omitempty"`
 	// AggregateID corresponds to AggregateID in
 	// event-store and ID in aggregate-projection.
-	AggregateID int8 `cql:"aggregate_id" json:"aggregate_id"`
+	AggregateID int8 `cql:"aggregate_id,omitempty" json:"aggregateID,omitempty"`
 	// PartitionKey is the partitioning key for events_meta table.
-	PartitionKey int8 `cql:"partition_key" json:"partition_key"`
+	PartitionKey int8 `cql:"partition_key,omitempty" json:"partitionKey,omitempty"`
 }

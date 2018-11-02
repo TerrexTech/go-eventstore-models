@@ -41,5 +41,6 @@ type KafkaResponse struct {
 	Topic string `json:"-"`
 
 	// UUID is the V4-UUID Response-Identifier.
+	// This can be same as service-query UUID, and can be used for identification puposes.
 	UUID uuuid.UUID `json:"uuid,omitempty"`
 }

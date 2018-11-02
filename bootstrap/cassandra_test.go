@@ -93,17 +93,18 @@ var _ = Describe("Event", func() {
 
 		uid, err := uuuid.NewV4()
 		Expect(err).ToNot(HaveOccurred())
-		tid, err := uuuid.NewV1()
+		tid, err := uuuid.NewV4()
 		Expect(err).ToNot(HaveOccurred())
 
 		e1 := &model.Event{
-			Action:        "insert",
 			AggregateID:   1,
+			EventAction:   "insert",
+			ServiceAction: "registerUser",
 			CorrelationID: cid,
-			Data:          []byte(""),
-			Timestamp:     time.Now(),
+			Data:          []byte{},
+			NanoTime:      time.Now().UnixNano(),
 			UserUUID:      uid,
-			TimeUUID:      tid,
+			UUID:          tid,
 			Version:       1,
 			YearBucket:    2018,
 		}
