@@ -11,16 +11,16 @@ func EventMeta() map[string]csndra.TableColumn {
 	if eventMeta == nil {
 		eventMeta = map[string]csndra.TableColumn{
 			"aggregateVersion": csndra.TableColumn{
-				Name:     "aggregate_version",
+				Name:     "aggregateVersion",
 				DataType: "bigint",
 			},
 			"aggregateID": csndra.TableColumn{
-				Name:            "aggregate_id",
+				Name:            "aggregateID",
 				DataType:        "smallint",
 				PrimaryKeyIndex: "1",
 			},
 			"partitionKey": csndra.TableColumn{
-				Name:            "partition_key",
+				Name:            "partitionKey",
 				DataType:        "smallint",
 				PrimaryKeyIndex: "0",
 			},

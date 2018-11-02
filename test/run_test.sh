@@ -5,14 +5,14 @@ echo $(pwd)
 docker-compose -f ./test/docker-compose.yaml up -d
 
 function ping_cassandra() {
-  docker exec -it cassandra /opt/bitnami/cassandra/bin/nodetool status | grep UN
+  docker exec -it cassandra /usr/bin/nodetool status | grep UN
   res=$?
 }
 
 echo "Waiting for Cassandra to be ready."
 
 # Wait for Cassandra to be ready
-max_attempts=40
+max_attempts=30
 cur_attempts=0
 ping_cassandra
 while (( res != 0 && ++cur_attempts != max_attempts ))
@@ -31,7 +31,7 @@ fi
 # nodetool-status being success.
 # There has to be a better way than this.
 echo "Waiting additional time for Cassandra to be ready."
-add_wait=40
+add_wait=30
 cur_add_wait=0
 while (( ++cur_add_wait != add_wait ))
 do

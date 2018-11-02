@@ -2,7 +2,7 @@ version: '3'
 
 services:
   cassandra:
-    image: bitnami/cassandra:latest
+    image: cassandra:latest
     container_name: cassandra
     ports:
       - "9042:9042"
