@@ -15,7 +15,7 @@ type KafkaResponse struct {
 	// ServiceAction is the service-specific Action for the event.
 	// For example, "insert" is EventAction, but "insertUser" is ServiceAction,
 	// informing service that a user was inserted.
-	ServiceAction string `cql:"service_action,omitempty" json:"serviceAction,omitempty"`
+	ServiceAction string `json:"serviceAction,omitempty"`
 
 	// CorrelationID can be used to "identify" responses, such as checking
 	// if the response is for some particular request.
