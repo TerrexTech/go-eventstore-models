@@ -9,8 +9,13 @@ type KafkaResponse struct {
 	// AggregateID is the ID of aggregate the response is for.
 	AggregateID int8 `json:"aggregate_id,omitempty"`
 
-	// Action is the action corresponding to which the response was produced.
-	Action string `json:"action,omitempty"`
+	// EventAction is the action corresponding to which the response was produced.
+	EventAction string `json:"eventAction,omitempty"`
+
+	// ServiceAction is the service-specific Action for the event.
+	// For example, "insert" is EventAction, but "insertUser" is ServiceAction,
+	// informing service that a user was inserted.
+	ServiceAction string `cql:"service_action,omitempty" json:"serviceAction,omitempty"`
 
 	// CorrelationID can be used to "identify" responses, such as checking
 	// if the response is for some particular request.
