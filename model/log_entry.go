@@ -14,4 +14,6 @@ type LogEntry struct {
 	// EventAction is the service-level action being performed by event
 	// corresponding to this log.
 	ServiceAction string `json:"serviceAction,omitempty"`
+	// ServiceName is the service associated with the log.
+	ServiceName string `json:"serviceName,omitempty"`
 }
