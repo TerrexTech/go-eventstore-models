@@ -79,7 +79,7 @@ var _ = Describe("Event", func() {
 	})
 
 	It("should create the event table", func() {
-		e, err := Event()
+		t, err := Event()
 		Expect(err).ToNot(HaveOccurred())
 
 		keyspaceMeta, err := session.GoCqlSession().KeyspaceMetadata(keyspace)
@@ -96,7 +96,7 @@ var _ = Describe("Event", func() {
 		tid, err := uuuid.NewV4()
 		Expect(err).ToNot(HaveOccurred())
 
-		e1 := &model.Event{
+		e := &model.Event{
 			AggregateID:   1,
 			EventAction:   "insert",
 			ServiceAction: "registerUser",
@@ -108,18 +108,26 @@ var _ = Describe("Event", func() {
 			Version:       1,
 			YearBucket:    2018,
 		}
-		err = <-e.AsyncInsert(e1)
+		err = <-t.AsyncInsert(e)
 		Expect(err).ToNot(HaveOccurred())
 	})
 
 	It("should create the event-meta table", func() {
-		_, err := EventMeta()
+		t, err := EventMeta()
 		Expect(err).ToNot(HaveOccurred())
 
 		keyspaceMeta, err := session.GoCqlSession().KeyspaceMetadata(keyspace)
 
 		eventMetaTable := os.Getenv("CASSANDRA_EVENT_META_TABLE")
 		Expect(keyspaceMeta.Tables[eventMetaTable]).ToNot(BeNil())
+		Expect(err).ToNot(HaveOccurred())
+
+		em := &model.EventMeta{
+			AggregateID:      1,
+			AggregateVersion: 2,
+			PartitionKey:     0,
+		}
+		err = <-t.AsyncInsert(em)
 		Expect(err).ToNot(HaveOccurred())
 	})
 
