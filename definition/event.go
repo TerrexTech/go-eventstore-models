@@ -42,6 +42,7 @@ func Event() map[string]csndra.TableColumn {
 			"UUID": csndra.TableColumn{
 				Name:     "uuid",
 				DataType: "uuid",
+				PrimaryKeyIndex: "4",
 			},
 			"version": csndra.TableColumn{
 				Name:            "version",
