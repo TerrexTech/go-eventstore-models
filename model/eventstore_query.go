@@ -18,6 +18,16 @@ type EventStoreQuery struct {
 	// responses generated as per result of event's processing.
 	CorrelationID uuuid.UUID `json:"correlationID,omitempty"`
 
+	// EventAction is the core-action being performed by event.
+	// For example, "insert" is EventAction, but "insertUser" is ServiceAction,
+	// informing service that a user was inserted.
+	EventAction string `json:"eventAction,omitempty"`
+
+	// ServiceAction is the service-specific Action for the event.
+	// For example, "insert" is EventAction, but "insertUser" is ServiceAction,
+	// informing service that a user was inserted.
+	ServiceAction string `json:"serviceAction,omitempty"`
+
 	// YearBucket is the partition-key for Event-Table.
 	YearBucket int16 `json:"yearBucket,omitempty"`
 

@@ -21,16 +21,16 @@
   version = "v3.1.0"
 
 [[projects]]
-  digest = "1:68c3fd9d39b68bc44df2ffab40bc64cb2569989d0500dfcdf304ea9b23f6e811"
+  digest = "1:d60c04290d42fa9b1b2c8aa1856bf7d7bc77af402e7f9a7e2d1c00c5df906d7e"
   name = "github.com/TerrexTech/uuuid"
   packages = ["."]
   pruneopts = "UT"
-  revision = "878f821b0790deac123bca2d170ac5cd5c9a527e"
-  version = "v1.1.0"
+  revision = "7e7a30e3b1c2fc538ac9a1553183a62f225d5a19"
+  version = "v1.2.0"
 
 [[projects]]
   branch = "master"
-  digest = "1:b74776d049e50a23a2b21182910b53a7e5f4834a9703381b9ed623c71163f7d7"
+  digest = "1:7173cfc9eec4c3f4b1f9260e60cd2f73a8f9b49739d00647f71a1eb14c498939"
   name = "github.com/gocql/gocql"
   packages = [
     ".",
@@ -39,15 +39,15 @@
     "internal/streams",
   ]
   pruneopts = "UT"
-  revision = "f0078a2a1998b932af7c3eed2b3b7980aef73c43"
+  revision = "9de8c0414fd7ff72ee819f25a66e4942cb223873"
 
 [[projects]]
-  digest = "1:ce579162ae1341f3e5ab30c0dce767f28b1eb6a81359aad01723f1ba6b4becdf"
+  digest = "1:c594a691090b434d55c67f6cc8e326ef5ba49452abc059821bd5d4fd4cdef08c"
   name = "github.com/gofrs/uuid"
   packages = ["."]
   pruneopts = "UT"
-  revision = "370558f003bfe29580cd0f698d8640daccdcc45c"
-  version = "v3.1.1"
+  revision = "7077aa61129615a0d7f45c49101cd011ab221c27"
+  version = "v3.1.2"
 
 [[projects]]
   branch = "master"
@@ -165,15 +165,15 @@
     "html/charset",
   ]
   pruneopts = "UT"
-  revision = "49bb7cea24b1df9410e1712aa6433dae904ff66a"
+  revision = "03003ca0c849e57b6ea29a4bab8d3cb6e4d568fe"
 
 [[projects]]
   branch = "master"
-  digest = "1:0a40b0bdd57a93e741d8557465be3a2edeec408e9b6399586ad65bbe8e355796"
+  digest = "1:7ba061af4131fb44b30448572acd0d6fefbf63a61b97b7ef1dea0be5871c2742"
   name = "golang.org/x/sys"
   packages = ["unix"]
   pruneopts = "UT"
-  revision = "fa43e7bc11baaae89f3f902b2b4d832b68234844"
+  revision = "66b7b1311ac80bbafcd2daeef9a5e6e2cd1e2399"
 
 [[projects]]
   digest = "1:aa4d6967a3237f8367b6bf91503964a77183ecf696f1273e8ad3551bb4412b5f"
