@@ -2,8 +2,8 @@ package model
 
 import "github.com/TerrexTech/uuuid"
 
-// DocumentMessage can be used to transfer data between services.
-type DocumentMessage struct {
+// Document can be used to transfer data between services.
+type Document struct {
 	// AggregateID is the ID of aggregate the document is for.
 	AggregateID int8 `json:"aggregateID,omitempty"`
 
